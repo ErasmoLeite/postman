@@ -23,11 +23,18 @@
 							"\r",
 							"pm.test('Has ID key', function(){\r",
 							"pm.expect(jsonData.data).to.have.property('id')\r",
-							"\r",
 							"})\r",
-							"pm.test('Status have the correct email', function(){\r",
-							"pm.expect(jsonData.data.email).to.be.eq('testeqa.ramakrishna@15ce.com')\r",
-							"})"
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							" let email=_.random(1000)+'@testeqa.com'\r",
+							" pm.environment.set('email',email)"
 						],
 						"type": "text/javascript"
 					}
@@ -38,7 +45,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"TesteQA\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"testeqa.ramakrishna@15ce.com\",\r\n    \"status\": \"active\"\r\n}",
+					"raw": "{\r\n    \"name\": \"TesteQA\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"{{email}}\",\r\n    \"status\": \"active\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -128,7 +135,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"TesteQA\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"testeqa.ramakrishna@15ce.com\",\r\n    \"status\": \"inactive\"\r\n}",
+					"raw": "{\r\n    \"name\": \"TesteQA\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"{{email}}\",\r\n    \"status\": \"inactive\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
